@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Training</title>
+  <rect width="128" height="128" fill="#050505"/>
+  <path d="M25 64h78M39 45v38M49 51v26M79 51v26M89 45v38" fill="none" stroke="#8298ff" stroke-width="8" stroke-linecap="square"/>
+  <path d="M56 64h16" fill="none" stroke="#f1efe8" stroke-width="8"/>
+</svg>

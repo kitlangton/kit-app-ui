@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Nutrition</title>
+  <rect width="128" height="128" fill="#050505"/>
+  <path d="M30 88V40l34 48V40" fill="none" stroke="#b7d36b" stroke-width="10" stroke-linecap="square" stroke-linejoin="bevel"/>
+  <path d="M83 40h15v48H83" fill="none" stroke="#f1efe8" stroke-width="6"/>
+</svg>

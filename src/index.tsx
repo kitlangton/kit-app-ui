@@ -24,24 +24,26 @@ export function AppShell({
 	readonly className?: string
 }) {
 	return (
-		<div className={join("kit-shell", className)}>
-			<header className="kit-topbar">
-				<a className="kit-wordmark" href="https://kitlangton.cloudflareaccess.com">
-					Kit
-				</a>
-				<nav className="kit-app-nav" aria-label="Apps">
-					{apps.map((app) => (
-						<a key={app.id} href={app.href} aria-current={app.id === activeApp ? "page" : undefined}>
-							{app.label}
-						</a>
-					))}
-				</nav>
-				<span className="kit-status" data-status={status}>
-					{status}
-				</span>
-			</header>
-			<div className="kit-hatch" aria-hidden="true" />
-			<main className={`kit-main kit-main--${width}`}>{children}</main>
+		<div className={join("kit-shell", `kit-shell--${width}`, className)}>
+			<div className="kit-frame">
+				<header className="kit-topbar">
+					<a className="kit-wordmark" href="https://kitlangton.cloudflareaccess.com">
+						Kit
+					</a>
+					<nav className="kit-app-nav" aria-label="Apps">
+						{apps.map((app) => (
+							<a key={app.id} href={app.href} aria-current={app.id === activeApp ? "page" : undefined}>
+								{app.label}
+							</a>
+						))}
+					</nav>
+					<span className="kit-status" data-status={status}>
+						{status}
+					</span>
+				</header>
+				<div className="kit-hatch" aria-hidden="true" />
+				<main className="kit-main">{children}</main>
+			</div>
 		</div>
 	)
 }
@@ -96,8 +98,86 @@ export function SectionHeader({
 	)
 }
 
-export function Button({ variant = "primary", className, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & {
-	readonly variant?: "primary" | "secondary" | "quiet"
+export function Button({
+	variant = "primary",
+	block = false,
+	className,
+	...props
+}: ButtonHTMLAttributes<HTMLButtonElement> & {
+	readonly variant?: "primary" | "secondary" | "quiet" | "ghost"
+	readonly block?: boolean
 }) {
-	return <button {...props} className={join("kit-button", `kit-button--${variant}`, className)} />
+	return (
+		<button
+			{...props}
+			className={join("kit-button", `kit-button--${variant}`, block && "kit-button--block", className)}
+		/>
+	)
+}
+
+export function SegmentedControl({
+	children,
+	block = false,
+	className,
+	label,
+}: {
+	readonly children: ReactNode
+	readonly block?: boolean
+	readonly className?: string
+	readonly label?: string
+}) {
+	return (
+		<div
+			className={join("kit-segment", block && "kit-segment--block", className)}
+			role="group"
+			aria-label={label}
+		>
+			{children}
+		</div>
+	)
+}
+
+export function Segment({
+	active = false,
+	icon = false,
+	className,
+	...props
+}: ButtonHTMLAttributes<HTMLButtonElement> & {
+	readonly active?: boolean
+	readonly icon?: boolean
+}) {
+	return (
+		<button
+			type="button"
+			{...props}
+			aria-current={active ? "true" : undefined}
+			className={join("kit-segment__item", icon && "kit-segment__item--icon", className)}
+		/>
+	)
+}
+
+export function SegmentLink({
+	active = false,
+	icon = false,
+	className,
+	children,
+	...props
+}: HTMLAttributes<HTMLAnchorElement> & {
+	readonly href: string
+	readonly active?: boolean
+	readonly icon?: boolean
+}) {
+	return (
+		<a
+			{...props}
+			aria-current={active ? "true" : undefined}
+			className={join("kit-segment__item", icon && "kit-segment__item--icon", className)}
+		>
+			{children}
+		</a>
+	)
+}
+
+export function SegmentValue({ children, className }: { readonly children: ReactNode; readonly className?: string }) {
+	return <div className={join("kit-segment__value", className)}>{children}</div>
 }

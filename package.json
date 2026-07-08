@@ -18,7 +18,7 @@
     "./styles.css": "./src/styles.css"
   },
   "scripts": {
-    "build": "bun build src/index.tsx --outdir dist --target browser --format esm --external react && tsc --emitDeclarationOnly",
+    "build": "bun build --production src/index.tsx --outdir dist --target browser --format esm --external react && tsc --emitDeclarationOnly",
     "prepare": "bun run build",
     "check": "bun run typecheck && bun run test && bun run build",
     "typecheck": "tsc --noEmit",

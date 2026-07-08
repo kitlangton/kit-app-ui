@@ -1,0 +1,48 @@
+{
+  "name": "@kitlangton/ui",
+  "version": "0.1.0",
+  "description": "Shared UI primitives for Kit's personal apps",
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "files": [
+    "dist",
+    "src/styles.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./src/styles.css"
+  },
+  "scripts": {
+    "build": "bun build src/index.tsx --outdir dist --target browser --format esm --external react && tsc --emitDeclarationOnly",
+    "check": "bun run typecheck && bun run test && bun run build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "changeset": "changeset",
+    "release": "bun run check && changeset publish"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.29.7",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kitlangton/kit-app-ui.git"
+  },
+  "license": "MIT"
+}

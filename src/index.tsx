@@ -56,7 +56,7 @@ export function PageHeader({
 	actions,
 	className,
 }: {
-	readonly eyebrow: ReactNode
+	readonly eyebrow?: ReactNode
 	readonly title: ReactNode
 	readonly description?: ReactNode
 	readonly actions?: ReactNode
@@ -65,7 +65,7 @@ export function PageHeader({
 	return (
 		<header className={join("kit-page-header", className)}>
 			<div className="kit-page-heading">
-				<Label>{eyebrow}</Label>
+				{eyebrow == null ? null : <Label>{eyebrow}</Label>}
 				<h1>{title}</h1>
 				{description === undefined ? null : <p>{description}</p>}
 			</div>

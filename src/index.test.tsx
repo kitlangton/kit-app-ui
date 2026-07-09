@@ -25,6 +25,7 @@ describe("AppShell", () => {
 		expect(html).toContain('aria-current="page"')
 		expect(html).toContain("kit-shell--wide")
 		expect(html).toContain("Nutrition")
+		expect(html).toContain("Organizer")
 		expect(html).toContain("Log food")
 		expect(html).toContain("kit-segment")
 	})

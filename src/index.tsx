@@ -1,11 +1,12 @@
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react"
 
-export type KitApp = "training" | "nutrition"
+export type KitApp = "training" | "nutrition" | "organizer"
 export type RealtimeStatus = "live" | "connecting" | "error"
 
 const apps: ReadonlyArray<{ readonly id: KitApp; readonly label: string; readonly href: string }> = [
 	{ id: "training", label: "Training", href: "https://workout.kitlangton.dev" },
 	{ id: "nutrition", label: "Nutrition", href: "https://nutrition.kitlangton.dev" },
+	{ id: "organizer", label: "Organizer", href: "https://organizer.kitlangton.dev" },
 ]
 
 const join = (...values: ReadonlyArray<string | undefined | false>) => values.filter(Boolean).join(" ")
